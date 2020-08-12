@@ -7,9 +7,25 @@ read varsurname
 echo It\'s nice to meet you $varname $varsurname
 
 mkdir $varname
+echo $varname directory created
 cd $varname
 mkdir $varsurname
+echo $varsurname directory created
 cd $varsurname
 
 touch "${varname} ${varsurname}"
-uname -r
+(uname -r && (date '+%Y-%m-%d') &&  awk -F= '$1=="VERSION" { print $1; print $2}' /etc/os-release) > "${varname} ${varsurname}"
+echo "${varname} ${varsurname}" file created
+
+
+# userName and userGroups
+((whoami) && groups ${whoami}) >> "${varname} ${varsurname}"
+
+# last 11 lines from syslog
+tail -n 11 /var/log/syslog >> "${varname} ${varsurname}"
+# network properties
+(ip link show && ip route | column -t) >> "${varname} ${varsurname}"
+
+chmod ugo-wx ./"${varname} ${varsurname}"
+
+echo "${varname} ${varsurname}" file rights changed to "read only"
