@@ -1,0 +1,15 @@
+#!/bin/bash
+# Ask the user for their name
+echo Input your name:
+read varname
+echo Input yout secondName:
+read varsurname
+echo It\'s nice to meet you $varname $varsurname
+
+mkdir $varname
+cd $varname
+mkdir $varsurname
+cd $varsurname
+
+touch "${varname} ${varsurname}"
+uname -r
